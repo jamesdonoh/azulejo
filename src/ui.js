@@ -25,7 +25,15 @@ class UI {
         parentEl.appendChild(endGrid);
     }
 
+    isInStartGrid(element) {
+        return element.parents('.grid--start').length > 0;
+    }
+
     isAcceptable(tileElement, positionElement) {
+        if (this.isInStartGrid(positionElement)) {
+            return true;
+        }
+
         let tile = tileElement.data('tile'),
             coords = positionElement.data('coords');
 
@@ -43,7 +51,11 @@ class UI {
         let tile = tileElement.data('tile'),
             coords = positionElement.data('coords');
 
-        this.game.placeTile(tile, coords[0], coords[1]);
+        if (this.isInStartGrid(positionElement)) {
+            this.game.removeTile(tile);
+        } else {
+            this.game.placeTile(tile, coords[0], coords[1]);
+        }
     }
 
     enableDragging(sourceSelector, targetSelector, acceptableTargetHoverClass) {

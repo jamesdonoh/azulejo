@@ -63,14 +63,19 @@ class Game {
         return canPlace;
     }
 
-    placeTile(tile, x, y) {
-        this.playArea[x][y] = tile;
-
+    removeTile(tile) {
         if (tile.coords !== null) {
             this.playArea[tile.coords[0]][tile.coords[1]] = null;
         }
 
+        tile.coords = null;
+    }
+
+    placeTile(tile, x, y) {
+        this.removeTile(tile);
+
         tile.coords = [x, y];
+        this.playArea[x][y] = tile;
 
         console.log(`${tile} played at position ${x},${y}`);
     }

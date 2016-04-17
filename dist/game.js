@@ -72,15 +72,21 @@ var Game = function () {
             return canPlace;
         }
     }, {
-        key: 'placeTile',
-        value: function placeTile(tile, x, y) {
-            this.playArea[x][y] = tile;
-
+        key: 'removeTile',
+        value: function removeTile(tile) {
             if (tile.coords !== null) {
                 this.playArea[tile.coords[0]][tile.coords[1]] = null;
             }
 
+            tile.coords = null;
+        }
+    }, {
+        key: 'placeTile',
+        value: function placeTile(tile, x, y) {
+            this.removeTile(tile);
+
             tile.coords = [x, y];
+            this.playArea[x][y] = tile;
 
             console.log(tile + ' played at position ' + x + ',' + y);
         }
@@ -213,8 +219,17 @@ var UI = function () {
             parentEl.appendChild(endGrid);
         }
     }, {
+        key: 'isInStartGrid',
+        value: function isInStartGrid(element) {
+            return element.parents('.grid--start').length > 0;
+        }
+    }, {
         key: 'isAcceptable',
         value: function isAcceptable(tileElement, positionElement) {
+            if (this.isInStartGrid(positionElement)) {
+                return true;
+            }
+
             var tile = tileElement.data('tile'),
                 coords = positionElement.data('coords');
 
@@ -233,7 +248,11 @@ var UI = function () {
             var tile = tileElement.data('tile'),
                 coords = positionElement.data('coords');
 
-            this.game.placeTile(tile, coords[0], coords[1]);
+            if (this.isInStartGrid(positionElement)) {
+                this.game.removeTile(tile);
+            } else {
+                this.game.placeTile(tile, coords[0], coords[1]);
+            }
         }
     }, {
         key: 'enableDragging',
