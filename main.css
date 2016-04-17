@@ -1,3 +1,7 @@
+body {
+    background-color: #eee;
+}
+
 .play-area {
     width: 45vh;
     margin: auto;
@@ -14,16 +18,20 @@
     display: inline-block;
     width: 30%;
     padding-bottom: 30%;
-
-    background-color: #ddd;
 }
 
+.grid--end .grid__position {
+    background-color: #fff;
+}
+
+/*
 .grid__position--allowed {
     background-color: #eee;
 }
+*/
 
-.grid__position--dropping {
-    background-color: #ccc;
+.grid--end .grid__position--dropping {
+    background-color: #ddd;
 }
 
 .tile {
