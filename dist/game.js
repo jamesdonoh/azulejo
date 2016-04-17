@@ -118,7 +118,7 @@ var _game = require('./game');
 
 var _ui = require('./ui');
 
-var parentSelector = 'body',
+var parentSelector = '.play-area',
     gridWidth = 3,
     gridHeight = 3;
 

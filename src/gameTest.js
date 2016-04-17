@@ -1,7 +1,7 @@
 import { Game } from './game';
 import { UI } from './ui';
 
-const parentSelector = 'body',
+const parentSelector = '.play-area',
     gridWidth = 3,
     gridHeight = 3;
 
