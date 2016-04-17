@@ -1,13 +1,12 @@
 .play-area {
-    width: 50vh;
-    height: 100vh;
+    width: 45vh;
     margin: auto;
 }
 
 .grid {
     font-size: 0;
     text-align: center;
-    margin: 2rem 0;
+    margin: 3rem 0;
 }
 
 .grid__position {
@@ -33,6 +32,6 @@
     width: 100%;
     height: 100%;
 
-    border: 7.6vh solid;
+    border: 6.8vh solid;
     border-color: blue yellow green red;
 }
