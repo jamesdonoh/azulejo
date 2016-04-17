@@ -1,0 +1,32 @@
+.grid {
+    font-size: 0;
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.grid__position {
+    position: relative;
+    display: inline-block;
+    width: 30%;
+    padding-bottom: 30%;
+
+    background-color: #ddd;
+}
+
+.grid__position--allowed {
+    background-color: #eee;
+}
+
+.grid__position--dropping {
+    background-color: #ccc;
+}
+
+.tile {
+    position: absolute;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+
+    border: 14.5vw solid;
+    border-color: blue yellow green red;
+}
